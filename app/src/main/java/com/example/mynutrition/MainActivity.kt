@@ -19,7 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-private const val KEY="GM3Y7RThzpEkmiJIKyiTfw==PkKN4em3byvm10xD"
+
+// get free API key at https://calorieninjas.com/api and put it down below to work
+private const val KEY="Add your api key here"
 
 class MainActivity : AppCompatActivity() {
     var responseList= mutableListOf<Item>()
