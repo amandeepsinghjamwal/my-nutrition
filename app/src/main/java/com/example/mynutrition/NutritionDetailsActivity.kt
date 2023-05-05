@@ -28,8 +28,9 @@ class NutritionDetailsActivity : AppCompatActivity() {
         val sFats=intent.getDoubleExtra("saturatedFat",0.0)
         val sodium=intent.getIntExtra("sodium",0)
         val potassium=intent.getIntExtra("potassium",0)
-        val cholestrol=intent.getIntExtra("cholestrol",0)
+        val cholesterol=intent.getIntExtra("cholesterol",0)
         val fiber=intent.getDoubleExtra("fiber",0.0)
+        val serving=intent.getDoubleExtra("servingSize",0.0)
         binding=ActivityNutritionDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val total=protein+carbs+tFats
@@ -42,7 +43,7 @@ class NutritionDetailsActivity : AppCompatActivity() {
             backButton.setOnClickListener{
                 finish()
             }
-
+            binding.serving.text="$serving g serving"
             binding.calories.text="$calories cal"
             binding.tFat.text="$tFats g"
             binding.carbs.text="$carbs g"
@@ -52,7 +53,7 @@ class NutritionDetailsActivity : AppCompatActivity() {
             binding.protein.text="$protein g"
             binding.sodium.text="$sodium mg"
             binding.potassium.text="$potassium mg"
-            binding.cholestrol.text="$cholestrol mg"
+            binding.cholestrol.text="$cholesterol mg"
 
             pieChart.setUsePercentValues(true)
             pieChart.description.isEnabled = true

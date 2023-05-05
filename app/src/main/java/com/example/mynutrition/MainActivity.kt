@@ -19,9 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-private const val KEY="GM3Y7RThzpEkmiJIKyiTfw==PkKN4em3byvm10xD"
+
 // get free API key at https://calorieninjas.com/api and put it down below to work
-//private const val KEY="Add your api key here"
+private const val KEY="Add your api key here"
 class MainActivity : AppCompatActivity() {
     var responseList= mutableListOf<Item>()
     private lateinit var adapter: ItemListAdapter
@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
             val saturatedFat=its.fat_saturated_g
             val totalFat=its.fat_total_g
             val calories=its.calories
-            val cholestrol=its.cholesterol_mg
+            val cholesterol=its.cholesterol_mg
             val protein = its.protein_g
             val carbs=its.carbohydrates_total_g
 
-            gotoDetails(name,sugar,fiber,servingSize,sodium,potassium,saturatedFat,totalFat,calories,cholestrol,protein,carbs)
+            gotoDetails(name,sugar,fiber,servingSize,sodium,potassium,saturatedFat,totalFat,calories,cholesterol,protein,carbs)
         }
         binding.recyclerView.adapter=adapter
         binding.recyclerView.layoutManager=LinearLayoutManager(this)
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         saturatedFat: Double,
         totalFat: Double,
         calories: Double,
-        cholestrol: Int,
+        cholesterol: Int,
         protein: Double,
         carbs: Double
     ) {
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             putExtra("saturatedFat",saturatedFat)
             putExtra("totalFat",totalFat)
             putExtra("calories",calories)
-            putExtra("cholestrol",cholestrol)
+            putExtra("cholesterol",cholesterol)
             putExtra("protein",protein)
             putExtra("carbs",carbs)
         }
