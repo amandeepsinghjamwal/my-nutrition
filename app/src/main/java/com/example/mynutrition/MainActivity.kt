@@ -19,10 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-
+private const val KEY="GM3Y7RThzpEkmiJIKyiTfw==PkKN4em3byvm10xD"
 // get free API key at https://calorieninjas.com/api and put it down below to work
-private const val KEY="Add your api key here"
-
+//private const val KEY="Add your api key here"
 class MainActivity : AppCompatActivity() {
     var responseList= mutableListOf<Item>()
     private lateinit var adapter: ItemListAdapter
@@ -104,7 +103,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun callApi(p0: String?) {
 
-        binding.recyclerView.visibility=View.GONE
         binding.shimmer.visibility=View.VISIBLE
         hideOverlays(1)
         val callApi=ApplicationApi.retrofitService.getData(p0!!,KEY)
@@ -118,9 +116,7 @@ class MainActivity : AppCompatActivity() {
                         if(responseList.isEmpty()){
                             hideOverlays(0)
                         }
-                        else{
-                            binding.recyclerView.visibility=View.VISIBLE
-                        }
+
                     }
                     Log.e("data",response.code().toString())
                 }
