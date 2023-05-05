@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">my nutrition</string>
+    <string name="search">Search among 10,000+ food items</string>
+    <string name="oops">Oops! No item found</string>
+</resources>
