@@ -1,5 +1,6 @@
 package com.example.mynutrition
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,41 +10,39 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
-    private lateinit var binding:ActivitySplashScreenBinding
+    private lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivitySplashScreenBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        intent= Intent(this,MainActivity::class.java).apply {
-            flags=Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
+        val iconList = listOf(
+            binding.ramen,
+            binding.coffee,
+            binding.croissont,
+            binding.burgerSoda,
+            binding.ramen,
+            binding.coffee,
+            binding.croissont,
+            binding.burgerSoda
+        )
+
         CoroutineScope(Dispatchers.Main).launch {
-            delay(250)
-            binding.ramen.visibility=View.GONE
-            binding.coffee.visibility=View.VISIBLE
-            delay(250)
-            binding.coffee.visibility=View.GONE
-            binding.croissont.visibility=View.VISIBLE
-            delay(250)
-            binding.croissont.visibility=View.GONE
-            binding.burgerSoda.visibility=View.VISIBLE
-            delay(250)
-            binding.burgerSoda.visibility=View.GONE
-            binding.ramen.visibility=View.VISIBLE
-            delay(250)
-            binding.ramen.visibility=View.GONE
-            binding.coffee.visibility=View.VISIBLE
-            delay(250)
-            binding.coffee.visibility=View.GONE
-            binding.croissont.visibility=View.VISIBLE
-            delay(250)
-            binding.croissont.visibility=View.GONE
-            binding.burgerSoda.visibility=View.VISIBLE
-            delay(250)
-            startActivity(intent)
+            iconList.forEach{
+                it.visibility = View.VISIBLE
+                delay(200)
+                it.visibility=View.GONE
+            }
+            withContext(Dispatchers.Main){
+                startActivity(intent)
+            }
         }
     }
 }
