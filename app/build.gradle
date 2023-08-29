@@ -7,6 +7,11 @@ android {
     namespace 'com.example.mynutrition'
     compileSdk 33
 
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
+
     defaultConfig {
         applicationId "com.example.mynutrition"
         minSdk 24
@@ -44,6 +49,12 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation "com.jakewharton.timber:timber:4.7.1"
+    testImplementation "androidx.test.ext:junit-ktx:1.1.3"
+    testImplementation "androidx.test:core-ktx:1.5.0"
+
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
@@ -52,10 +63,21 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+
+
+    testImplementation "org.robolectric:robolectric:4.10.3"
 
     implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
     implementation 'com.nineoldandroids:library:2.4.0'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
 
 }
